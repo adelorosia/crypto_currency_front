@@ -1,12 +1,15 @@
+import MaxWithWrapper from "../components/MaxWithWrapper";
+import Post from "../components/post/Post";
 import HeaderProfile from "../components/user/HeaderProfile";
 
 
 
 const UserProfile = () => {
   return (
-    <div>
+    <MaxWithWrapper>
       <HeaderProfile />
-    </div>
+      <Post />
+    </MaxWithWrapper>
   );
 };
 
