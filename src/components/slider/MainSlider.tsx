@@ -1,39 +1,24 @@
-
 import { useState } from "react";
-
-
 import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 
-
-export interface CarouselItem {
-
 export interface ICarouselItem {
-
     id: string;
     image: string; // Der Typ von "image" sollte ein String sein
 }
 
 interface SliderProps {
-
-    items: CarouselItem[];
-
     items: ICarouselItem[];
-
     numberItemsDesktop?: number;
     numberItemsTablet?: number;
     numberItemsMobile?: number;
 }
 
-
 const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberItemsMobile = 1 }: SliderProps) => {
 
 
     const [activeIndex, setActiveIndex] = useState(0);
-
-const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberItemsMobile = 1 }: SliderProps) => {
-
 
     const responsive = {
         desktop: {
@@ -51,7 +36,6 @@ const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numb
     };
 
 
-
   const CustomDot = ({ onClick, active }: any) => (
     <button
       className={`w-4 h-4 rounded-full focus:outline-none m-2 ${
@@ -62,12 +46,10 @@ const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numb
   );
 
 
-
     return (
         <Carousel
             responsive={responsive}
             renderButtonGroupOutside
-
             className="container relative "
             arrows={true}
             draggable={true}
@@ -80,24 +62,32 @@ const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numb
             
         
             {items.slice(0,4).map(item => <div className=" w-full container" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
-
-            className=" relative rounded-md"
-            arrows={true}
-            draggable={true}
-            showDots
-            removeArrowOnDeviceType={['mobile', 'tablet']}
-        >
-            {items.slice(0,4).map(item => <div className=" w-full" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
-
         </Carousel>
     );
 }
 
 
 
-
   
 export default Slider;
 
-export default MainSlider;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

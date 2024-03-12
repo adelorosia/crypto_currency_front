@@ -1,7 +1,8 @@
 import MaxWithWrapper from "../components/MaxWithWrapper";
-import MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
-import SliderCoins, { ISliderCoins } from "../components/slider/SliderCoins";
+import  MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
+
 import { FaBitcoin } from "react-icons/fa";
+import SliderCoins from "../components/slider/SliderCoins";
 
 const items: ICarouselItem[] = [
   {

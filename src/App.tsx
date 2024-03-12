@@ -1,34 +1,3 @@
-
-import Slider, { CarouselItem } from "./components/slider/MainSlider";
-
-const App = () => {
-  const items: CarouselItem[] = [
-    {
-      id: "1",
-      image: "/bild1.jpg",
-    },
-    {
-      id: "2",
-      image: "/bild2.jpg",
-    },
-    {
-      id: "3",
-      image: "/bild2.jpg",
-    },
-    {
-      id: "4",
-      image: "/bild2.jpg",
-    },
-    {
-      id: "5",
-      image: "/bild2.jpg",
-    },
-  ];
-
-  return (
-    <div className="c container px-6">
-      <Slider items={items} />
-
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,14 +12,12 @@ import { AppDispatch, RootState } from "./feature/store";
 import SidebarMenu from "./components/navbar/menu/SidebarMenu";
 import { useEffect } from "react";
 import { displayUsers } from "./feature/reducers/authSlice";
-
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(
     (state: RootState) => state.app
   );
   const users = useSelector(displayUsers);
-
   useEffect(() => {}, [users]);
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -60,11 +27,8 @@ const App = () => {
       dispatch(setIsDarkMode(false));
     }
   }, [isDarkMode]);
-
   // useEffect(() => {
-
   //   if (userInfo.userId) {
-
   //     const exp = userInfo.exp;
   //     const currentTime = Math.floor(Date.now() / 1000);
   //     if (exp && exp < currentTime) {
@@ -73,7 +37,6 @@ const App = () => {
   //     }
   //   }
   // }, []);
-
   return (
     // <PersistGate loading={null} persistor={persistor}>
     <div
@@ -121,10 +84,15 @@ const App = () => {
         <footer>footer</footer>
       </div>
       <ToastContainer />
-
     </div>
     // </PersistGate>
   );
 };
-
 export default App;
+
+
+
+
+
+
+

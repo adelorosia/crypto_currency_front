@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
+
 import HomePage from "../pages/HomePage";
 import AnalyzePage from "../pages/AnalyzePage";
 import NewsPage from "../pages/NewsPage";
@@ -9,6 +9,7 @@ import CalcPage from "../pages/CalcPage";
 import VerifyAccountPage from "../pages/VerifyAccountPage";
 import NotFound from "../pages/NotFoundPage";
 import UserProfilePage from "../pages/UserProfilePage";
+import App from "../App";
 
 
 export const router = createBrowserRouter([
