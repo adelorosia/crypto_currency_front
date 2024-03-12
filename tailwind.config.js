@@ -10,7 +10,7 @@ export default {
     container:{
       center:true
     },
-    extend: {},
+    
 
     fontFamily: {
       FONT_VIGA: ["Viga", "sans-serif"],
