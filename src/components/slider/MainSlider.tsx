@@ -39,7 +39,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
   const CustomDot = ({ onClick, active }: any) => (
     <button
       className={`w-4 h-4 rounded-full focus:outline-none m-2 ${
-        active ? "bg-red-200" : "bg-gray-500"
+        active ? " bg-SECONDARY_BLUE" : " bg-SECONDARY_GRAY"
       }`}
       onClick={onClick}
     ></button>
@@ -58,6 +58,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
             additionalTransfrom={0}
             beforeChange={(nextSlide) => setActiveIndex(nextSlide)}
             infinite={true}
+            autoPlay
           >
             
         
