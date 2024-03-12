@@ -4,7 +4,7 @@ import HeaderProfile from "../components/user/HeaderProfile";
 
 
 
-const UserProfile = () => {
+const UserProfilePage = () => {
   return (
     <MaxWithWrapper>
       <HeaderProfile />
@@ -13,4 +13,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfilePage;

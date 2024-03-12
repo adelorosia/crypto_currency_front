@@ -8,7 +8,7 @@ import CalcPage from "../pages/CalcPage";
 
 import VerifyAccountPage from "../pages/VerifyAccountPage";
 import NotFound from "../pages/NotFoundPage";
-import UserProfile from "../pages/UserProfile";
+import UserProfilePage from "../pages/UserProfilePage";
 
 
 export const router = createBrowserRouter([
@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <UserProfile />,
+        element: <UserProfilePage />,
       },
     ],
   },
