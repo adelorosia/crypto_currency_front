@@ -6,7 +6,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-
     fontFamily: {
       FONT_VIGA: ["Viga", "sans-serif"],
       FONT_ROBOTO: ["Roboto", "sans-serif"],
@@ -15,10 +14,10 @@ export default {
     },
     extend: {
       colors: {
-        PRIMARY_BLACK:"#000000",
-        SECONDARY_BLACK: "#0f172a",
-        PRIMARY_WHITE: "#ffffff",
-        SECONDARY_WHITE:"#e0f2fe",
+        PRIMARY_BLACK:"#020617",
+        SECONDARY_BLACK: "#030712",
+        PRIMARY_WHITE: "#f8fafc",
+        SECONDARY_WHITE:"#f9fafb",
         PRIMARY_BLUE:"#0284c7",
         SECONDARY_BLUE:"#22d3ee",
         PRIMARY_ORANGE:"#ee8425",
@@ -29,13 +28,6 @@ export default {
         SECONDARY_GRAY: "#a3a3a3",
       },
     },
-
-    container:{
-      center:true
-    },
-
-    extend: {},
-
   },
   plugins: [],
 }

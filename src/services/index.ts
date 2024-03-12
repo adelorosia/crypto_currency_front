@@ -1,7 +1,8 @@
 import axios from "axios";
 import { TUser } from "../interface";
 
-const SERVER_URL = "http://localhost:3005/api/v1";
+
+const SERVER_URL = "https://crypto-currency-db.orosia.online/api/v1";
 
 export const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use;

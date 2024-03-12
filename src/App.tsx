@@ -13,18 +13,14 @@ import SidebarMenu from "./components/navbar/menu/SidebarMenu";
 import { useEffect } from "react";
 import { displayUsers } from "./feature/reducers/authSlice";
 
-
-
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(
     (state: RootState) => state.app
   );
-const users=useSelector(displayUsers)
+  const users = useSelector(displayUsers);
 
-useEffect(()=>{
-
-},[users])
+  useEffect(() => {}, [users]);
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "true") {
@@ -54,7 +50,15 @@ useEffect(()=>{
         isDarkMode ? "dark-theme" : " light-theme"
       }`}
     >
-      <SidebarMenu />
+      <div
+        className={`${
+          isDarkMode
+            ? " bg-SECONDARY_BLACK text-PRIMARY_WHITE"
+            : " bg-SECONDARY_WHITE text-PRIMARY_BLACK"
+        }`}
+      >
+        <SidebarMenu />
+      </div>
       <div
         className={`ease-in-out duration-300 z-20 backdrop-blur-sm ${
           isSidebarMenuOpen
@@ -72,7 +76,11 @@ useEffect(()=>{
         }}
       >
         <header
-          className={`py-3 shadow-sm ${isDarkMode && " shadow-gray-800"}`}
+          className={`py-3 mb-6 shadow-sm ${
+            isDarkMode
+              ? " bg-SECONDARY_BLACK text-PRIMARY_WHITE"
+              : " bg-SECONDARY_WHITE text-PRIMARY_BLACK"
+          }`}
         >
           <Navbar />
         </header>

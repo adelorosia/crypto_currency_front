@@ -42,6 +42,10 @@ export const router = createBrowserRouter([
         element: <CalcPage />,
       },
       {
+        path: "/profile",
+        element: <UserProfilePage />,
+      },
+      {
         path: "/verify_account/:verifyToken",
         element: <VerifyAccountPage />,
       },

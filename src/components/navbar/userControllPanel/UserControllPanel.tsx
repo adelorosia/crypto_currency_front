@@ -102,6 +102,7 @@ const userId=localStorage.getItem("userId")
               onClick={async () => {
                 switch (item.title) {
                   case "Profile":
+                    navigate("/profile")
                     break;
                   case "Home":
                     break;

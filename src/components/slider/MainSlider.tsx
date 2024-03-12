@@ -35,13 +35,13 @@ const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numb
         <Carousel
             responsive={responsive}
             renderButtonGroupOutside
-            className="container relative pb-10"
+            className=" relative rounded-md"
             arrows={true}
             draggable={true}
             showDots
             removeArrowOnDeviceType={['mobile', 'tablet']}
         >
-            {items.slice(0,4).map(item => <div className=" w-full container" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
+            {items.slice(0,4).map(item => <div className=" w-full" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
         </Carousel>
     );
 }
