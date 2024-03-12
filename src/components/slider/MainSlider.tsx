@@ -62,7 +62,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
           >
             
         
-            {items.slice(0,4).map(item => <div className=" w-full rounded-md overflow-hidden" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
+            {items.slice(0,4).map(item => <div className=" w-full rounded-md overflow-hidden" key={item.id}><img className=" w-full h-[100px] md:h-[150px] lg:h-[200px] xl:h-[300px]" src={item.image} alt="" /></div>)} 
         </Carousel>
     );
 }

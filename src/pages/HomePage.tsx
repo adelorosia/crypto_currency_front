@@ -7,23 +7,19 @@ import SliderCoins from "../components/slider/SliderCoins";
 const items: ICarouselItem[] = [
   {
     id: "1",
-    image: "/bild1.jpg",
+    image: "/banner1.png",
   },
   {
     id: "2",
-    image: "/bild2.jpg",
+    image: "/banner2.png",
   },
   {
     id: "3",
-    image: "/bild2.jpg",
+    image: "/banner1.png",
   },
   {
     id: "4",
-    image: "/bild2.jpg",
-  },
-  {
-    id: "5",
-    image: "/bild2.jpg",
+    image: "/banner2.png",
   },
 ];
 
