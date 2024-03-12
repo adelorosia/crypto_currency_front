@@ -4,16 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "vite --port=3000",
+    "build": "tsc --build --clean && vite build",
+    "start": "vite serve --host --port 3555",
+    "setup": "npm i && npm run build && pm2 start --name mainsite npm -- start --update-env --time && pm2 save",
+    "deploy": "git pull --no-rebase && npm i && npm run build && pm2 restart mainsite --update-env --time && pm2 save",
+    "cp": "node cli/cp.mjs"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.1",
+    "axios": "^1.6.7",
+    "formik": "^2.4.5",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.3",
+    "react-toastify": "^10.0.4",
+    "yup": "^1.4.0"
+
     "react-multi-carousel": "^2.8.4"
+
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
