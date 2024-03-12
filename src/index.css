@@ -1,3 +1,14 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.custom-dot-list {
+  /* Setzen Sie die gewünschte Farbe für die Schaltflächen */
+  color: red; /* Zum Beispiel Rot */
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&family=Salsa&family=Viga&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
@@ -67,4 +78,5 @@ h4 {
 
 .btn-calc {
   @apply w-full p-1 rounded-md hover:text-PRIMARY_BLACK font-FONT_VIGA font-bold bg-PRIMARY_BLACK;
+
 }

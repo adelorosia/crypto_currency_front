@@ -6,6 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
+    container:{
+      center:true
+    },
+    extend: {},
+
     fontFamily: {
       FONT_VIGA: ["Viga", "sans-serif"],
       FONT_ROBOTO: ["Roboto", "sans-serif"],
@@ -28,6 +34,7 @@ export default {
         SECONDARY_GRAY: "#a3a3a3",
       },
     },
+
   },
   plugins: [],
 }

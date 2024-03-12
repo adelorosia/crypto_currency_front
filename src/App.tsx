@@ -1,3 +1,34 @@
+
+import Slider, { CarouselItem } from "./components/slider/MainSlider";
+
+const App = () => {
+  const items: CarouselItem[] = [
+    {
+      id: "1",
+      image: "/bild1.jpg",
+    },
+    {
+      id: "2",
+      image: "/bild2.jpg",
+    },
+    {
+      id: "3",
+      image: "/bild2.jpg",
+    },
+    {
+      id: "4",
+      image: "/bild2.jpg",
+    },
+    {
+      id: "5",
+      image: "/bild2.jpg",
+    },
+  ];
+
+  return (
+    <div className="c container px-6">
+      <Slider items={items} />
+
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -90,6 +121,7 @@ const App = () => {
         <footer>footer</footer>
       </div>
       <ToastContainer />
+
     </div>
     // </PersistGate>
   );
