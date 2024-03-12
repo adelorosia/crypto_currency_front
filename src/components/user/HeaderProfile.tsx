@@ -5,19 +5,20 @@ import { displayUser } from "../../feature/reducers/authSlice";
 
 const HeaderProfile = () => {
   const userId = localStorage.getItem("userId");
+  
   const user = useSelector((state: RootState) => displayUser(state, userId!));
   return (
-<div className="my-4 ">
-<div className="flex gap-4 font-FONT_VIGA justify-start">
+    <div className="my-4   ">
+      <div className="flex gap-4 font-FONT_VIGA justify-start items-center">
         <img
-          className="w-[80px] h-[80px] rounded-full"
+          className=" w-40 h-40 rounded-full"
           src={user?.profile_photo}
           alt=""
         />
-    
-      <div className="flex flex-col gap-3 w-full">
+
+        <div className="flex flex-col gap-3 w-full">
           <div className=" flex gap-3 items-center w-full justify-between">
-            <p className=" font-FONT_VIGA ">{`${user?.firstName} ${user?.lastName}`}</p>
+            <p className=" font-FONT_VIGA text-2xl font-bold ">{`${user?.firstName} ${user?.lastName}`}</p>
             <IoMdSettings className="cursor-pointer icon btn-icon" />
           </div>
           <div className="hidden md:flex items-center gap-4 ">
@@ -32,14 +33,12 @@ const HeaderProfile = () => {
             </p>
           </div>
           <div>
-            <p>{user?.email}</p>
+            <p className="text-sm text-PRIMARY_GRAY">{user?.email}</p>
           </div>
         </div>
-      <div>{user?.bio}</div>
-    
-
-    </div>
-    <div className=" flex mt-2 items-center justify-evenly md:hidden">
+        <div>{user?.bio}</div>
+      </div>
+      <div className=" flex mt-2 items-center justify-evenly md:hidden">
         <div className=" flex flex-col items-center gap-2">
           <span>3</span>
           <span>Beitrag</span>
@@ -53,7 +52,7 @@ const HeaderProfile = () => {
           <span>Gefolgt</span>
         </div>
       </div>
-</div>
+    </div>
   );
 };
 
