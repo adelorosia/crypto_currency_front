@@ -50,7 +50,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
         <Carousel
             responsive={responsive}
             renderButtonGroupOutside
-            className="container relative "
+            className="relative"
             arrows={true}
             draggable={true}
             showDots
@@ -61,7 +61,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
           >
             
         
-            {items.slice(0,4).map(item => <div className=" w-full container" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
+            {items.slice(0,4).map(item => <div className=" w-full rounded-md overflow-hidden" key={item.id}><img className=" w-full h-[300px]" src={item.image} alt="" /></div>)} 
         </Carousel>
     );
 }
