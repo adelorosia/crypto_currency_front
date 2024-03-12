@@ -11,19 +11,19 @@ const sliderCoin: ISliderCoins[] = [
   {
     id: "1",
     component: (
-      <div className="mt-4 bg-black p-4 flex flex-col gap-2 rounded-lg w-full">
-        <div className="flex items-center text-white gap-3">
+      <div className=" coin-slider-theme p-4 flex flex-col  rounded-lg w-full gap-2">
+        <div className="flex items-center  gap-3">
           <FaBitcoin className="text-xl text-yellow-400" />
           <p>Bitcoin</p>
           <p>BTC/USD</p>
         </div>
-        <div className="flex gap-3 text-white">
+        <div className="flex gap-3  ">
           <span className="font-bold text-xl">USD</span>
           <span className="text-xl font-bold">46,168.95</span>
         </div>
         <div className="flex gap-3">
-          <span className="text-gray-200">36,641.20</span>{" "}
-          <span className="bg-red-400 rounded-lg px-1">-0.79%</span>
+          <span className="">36,641.20</span>{" "}
+          <span className="bg-PRIMARY_RED rounded-lg px-1">-0.79%</span>
         </div>
       </div>
     ),
@@ -31,19 +31,19 @@ const sliderCoin: ISliderCoins[] = [
   {
     id: "2",
     component: (
-      <div className="mt-4 bg-black p-4 flex flex-col gap-2 rounded-lg w-full">
-        <div className="flex items-center text-white gap-3">
+      <div className=" coin-slider-theme p-4 flex flex-col  rounded-lg w-full gap-2">
+        <div className="flex items-center  gap-3">
           <FaBitcoin className="text-xl text-yellow-400" />
           <p>Bitcoin</p>
           <p>BTC/USD</p>
         </div>
-        <div className="flex gap-3 text-white">
+        <div className="flex gap-3 ">
           <span className="font-bold text-xl">USD</span>
           <span className="text-xl font-bold">46,168.95</span>
         </div>
         <div className="flex gap-3">
-          <span className="text-gray-200">36,641.20</span>{" "}
-          <span className="bg-red-400 rounded-lg px-1">-0.79%</span>
+          <span className="">36,641.20</span>{" "}
+          <span className="bg-PRIMARY_RED rounded-lg px-1">-0.79%</span>
         </div>
       </div>
     ),
@@ -51,19 +51,19 @@ const sliderCoin: ISliderCoins[] = [
   {
     id: "3",
     component: (
-      <div className="mt-4 bg-black p-4 flex flex-col gap-2 rounded-lg w-full">
-        <div className="flex items-center text-white gap-3">
+      <div className=" coin-slider-theme p-4 flex flex-col  rounded-lg w-full gap-2">
+        <div className="flex items-center  gap-3">
           <FaBitcoin className="text-xl text-yellow-400" />
           <p>Bitcoin</p>
           <p>BTC/USD</p>
         </div>
-        <div className="flex gap-3 text-white">
+        <div className="flex gap-3 ">
           <span className="font-bold text-xl">USD</span>
           <span className="text-xl font-bold">46,168.95</span>
         </div>
         <div className="flex gap-3">
-          <span className="text-gray-200">36,641.20</span>{" "}
-          <span className="bg-red-400 rounded-lg px-1">-0.79%</span>
+          <span className="">36,641.20</span>{" "}
+          <span className="bg-PRIMARY_RED rounded-lg px-1">-0.79%</span>
         </div>
       </div>
     ),
@@ -71,32 +71,25 @@ const sliderCoin: ISliderCoins[] = [
   {
     id: "4",
     component: (
-      <div className="mt-4 bg-black p-4 flex flex-col gap-2 rounded-lg w-full">
-        <div className="flex items-center text-white gap-3">
+      <div className=" coin-slider-theme p-4 flex flex-col rounded-lg w-full gap-2">
+        <div className="flex items-center  gap-3">
           <FaBitcoin className="text-xl text-yellow-400" />
           <p>Bitcoin</p>
           <p>BTC/USD</p>
         </div>
-        <div className="flex gap-3 text-white">
+        <div className="flex gap-3 ">
           <span className="font-bold text-xl">USD</span>
           <span className="text-xl font-bold">46,168.95</span>
         </div>
         <div className="flex gap-3">
-          <span className="text-gray-200">36,641.20</span>{" "}
-          <span className="bg-red-400 rounded-lg px-1">-0.79%</span>
+          <span className="">36,641.20</span>{" "}
+          <span className="bg-PRIMARY_RED rounded-lg px-1">-0.79%</span>
         </div>
       </div>
     ),
   },
 ];
-const CustomDot = ({ onClick, active }: any) => (
-    <button
-      className={`w-2 h-2 rounded-full focus:outline-none m-2 ${
-        active ? " bg-PRIMARY_RED" : " bg-SECONDARY_GRAY"
-      }`}
-      onClick={onClick}
-    ></button>
-  );
+
 
 const SliderCoins = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -119,18 +112,16 @@ const SliderCoins = () => {
     <Carousel
       responsive={responsive}
       renderButtonGroupOutside
-      className=" flex gap-2 items-center justify-between w-full"
+      className=" flex items-center justify-between w-full"
       arrows={true}
       draggable={true}
-      customDot={<CustomDot />}
-      showDots
       additionalTransfrom={0}
             beforeChange={(nextSlide) => setActiveIndex(nextSlide)}
     >
       
         
         {sliderCoin.map((item) => (
-            <div className=" flex " style={{margin:"0 8px"}} key={item.id}>
+            <div className=" flex pr-1 last:mr-0"  key={item.id}>
               {item.component}
             </div>))}
        

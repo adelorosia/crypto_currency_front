@@ -20,12 +20,14 @@ export default {
     },
     extend: {
       colors: {
-        PRIMARY_BLACK:"#020617",
-        SECONDARY_BLACK: "#030712",
-        PRIMARY_WHITE: "#f8fafc",
-        SECONDARY_WHITE:"#f9fafb",
+        PRIMARY_BLACK:"#191919",
+        SECONDARY_BLACK: "#202020",
+        BLACK:"#000000",
+        PRIMARY_WHITE: "#f8f8f2",
+        SECONDARY_WHITE:"#f9f9f2",
         PRIMARY_BLUE:"#0284c7",
         SECONDARY_BLUE:"#22d3ee",
+        DARK_BLUE:"#172554",
         PRIMARY_ORANGE:"#ee8425",
         SECONDARY_ORANGE: "#fdba74",
         PRIMARY_RED:"#dc2626",

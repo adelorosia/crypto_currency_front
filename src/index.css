@@ -10,12 +10,18 @@ body{
 }
 
 .dark-theme{
-  @apply  bg-gradient-to-r from-SECONDARY_BLACK from-10% to-PRIMARY_BLACK to-90%  text-PRIMARY_WHITE opacity-95
+  @apply  bg-PRIMARY_BLACK
 }
 
 .light-theme{
-@apply bg-white
+@apply bg-PRIMARY_WHITE
 }
+
+.coin-slider-theme{
+  @apply bg-DARK_BLUE text-PRIMARY_WHITE font-FONT_SALSA
+}
+
+
 
 .box-theme{
  @apply bg-gradient-to-r from-gray-800 from-10% to-PRIMARY_BLACK to-90% text-PRIMARY_WHITE
