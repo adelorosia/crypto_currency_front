@@ -2,19 +2,19 @@ import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
 
-export interface CarouselItem {
+export interface ICarouselItem {
     id: string;
     image: string; // Der Typ von "image" sollte ein String sein
 }
 
 interface SliderProps {
-    items: CarouselItem[];
+    items: ICarouselItem[];
     numberItemsDesktop?: number;
     numberItemsTablet?: number;
     numberItemsMobile?: number;
 }
 
-const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberItemsMobile = 1 }: SliderProps) => {
+const MainSlider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberItemsMobile = 1 }: SliderProps) => {
 
     const responsive = {
         desktop: {
@@ -46,4 +46,4 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
     );
 }
 
-export default Slider;
+export default MainSlider;

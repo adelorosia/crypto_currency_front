@@ -8,6 +8,7 @@ import CalcPage from "../pages/CalcPage";
 
 import VerifyAccountPage from "../pages/VerifyAccountPage";
 import NotFound from "../pages/NotFoundPage";
+import UserProfile from "../pages/UserProfile";
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/verify_account/:verifyToken",
         element: <VerifyAccountPage />,
+      },
+      {
+        path: "/profile",
+        element: <UserProfile />,
       },
     ],
   },
