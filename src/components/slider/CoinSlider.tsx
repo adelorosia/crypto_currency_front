@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import { useSelector } from "react-redux";
-import { displayCoins } from "../../feature/reducers/coinSlise";
+import { displayCoins } from "../../feature/reducers/coinSlice";
 
 const CoinSlider = () => {
   const coins = useSelector(displayCoins);

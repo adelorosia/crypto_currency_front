@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer, { fetchUsers } from "../reducers/userSlice";
 import appReducer from "../reducers/appSlice";
-import coinReducer, { fetchCoins } from "../reducers/coinSlise";
+import coinReducer, { fetchCoins } from "../reducers/coinSlice";
 import { axiosJWT, refreshToken } from "../../services";
 
 
