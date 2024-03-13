@@ -35,9 +35,9 @@ export type TUser = Partial<IUser>;
 export interface ICoin {
   _id: string;
   id: string;
-  symbol: "string";
-  name: "string";
-  image: "string";
+  symbol: string;
+  name: string;
+  image: string;
   current_price: number;
   market_cap: number;
   market_cap_rank: number;
@@ -54,12 +54,15 @@ export interface ICoin {
   max_supply: number;
   ath: number;
   ath_change_percentage: number;
-  ath_date: string;
+  ath_date: Date;
   atl: number;
-  atl_change_percentage: number;
-  atl_date: string;
+  atl_date: number;
+  atl_change_percentage: Date;
   roi: object;
-  last_updated: string;
+  last_updated: Date;
+  sparkline_in_7d: {
+    price: number[];
+  };
   price_change_percentage_1h_in_currency: number;
   price_change_percentage_24h_in_currency: number;
   price_change_percentage_7d_in_currency: number;

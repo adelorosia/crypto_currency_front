@@ -12,7 +12,12 @@ export const store = configureStore({
     users: userReducer,
     app: appReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
+
 
 axiosJWT.interceptors.request.use(
 
