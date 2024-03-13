@@ -1,7 +1,7 @@
 import { FaUserLock } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../feature/store";
-import { verifyApiUserEmail } from "../feature/reducers/authSlice";
+import { verifyApiUserEmail } from "../feature/reducers/userSlice";
 
 
 const ForbiddenPage = () => {

@@ -6,7 +6,7 @@ import {
   loginApiUser,
   setIsLoginFormOpen,
   setUserInfo,
-} from "../../feature/reducers/authSlice";
+} from "../../feature/reducers/userSlice";
 import { NotificationService } from "../../services/notificationServices";
 import { AppDispatch } from "../../feature/store";
 import logo from "../../assets/images/logo.png";

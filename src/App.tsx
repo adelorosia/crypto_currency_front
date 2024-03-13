@@ -11,7 +11,7 @@ import {
 import { AppDispatch, RootState } from "./feature/store";
 import SidebarMenu from "./components/navbar/menu/SidebarMenu";
 import { useEffect } from "react";
-import { displayUsers } from "./feature/reducers/authSlice";
+import { displayUsers } from "./feature/reducers/userSlice";
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(

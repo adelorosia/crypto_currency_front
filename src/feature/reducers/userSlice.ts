@@ -16,18 +16,18 @@ import {
 } from "../../services";
 import { RootState } from "../store";
 
-interface IAuthState {
+interface IUserState {
   isLoginFormOpen: boolean;
   isAccountVerified: boolean;
   userInfo: IUserInfo;
 }
 
-const authAdapter = createEntityAdapter<IUser, string>({
+const userAdapter = createEntityAdapter<IUser, string>({
   selectId: (user) => user._id,
 });
 
 export const registerApiUser = createAsyncThunk(
-  "/auth/registerApiUser",
+  "/users/registerApiUser",
   async (initialUser: TUser) => {
     try {
       const response = await registerUser(initialUser);
@@ -39,7 +39,7 @@ export const registerApiUser = createAsyncThunk(
 );
 
 export const loginApiUser = createAsyncThunk(
-  "/auth/loginApiUser",
+  "/users/loginApiUser",
   async (initialUser: TUser) => {
     try {
       const response = await loginUser(initialUser);
@@ -51,7 +51,7 @@ export const loginApiUser = createAsyncThunk(
 );
 
 export const logoutApiUser = createAsyncThunk(
-  "/auth/logoutApiUser",
+  "/users/logoutApiUser",
   async () => {
     try {
       const response = await logoutUser();
@@ -63,7 +63,7 @@ export const logoutApiUser = createAsyncThunk(
 );
 
 export const verifyApiUserEmail = createAsyncThunk(
-  "/auth/verifyApiUserEmail",
+  "/users/verifyApiUserEmail",
   async () => {
     try {
       const response = await verifyUserEmail();
@@ -75,7 +75,7 @@ export const verifyApiUserEmail = createAsyncThunk(
 );
 
 export const accountApiVerification = createAsyncThunk(
-  "/auth/accountApiVerification",
+  "/users/accountApiVerification",
   async (initialToken: TUser) => {
     try {
       const response = await accountVerification(initialToken);
@@ -86,7 +86,7 @@ export const accountApiVerification = createAsyncThunk(
   }
 );
 
-export const fetchUsers = createAsyncThunk("/auth/fetchUsers", async () => {
+export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
   try {
     const response = await getAllUsers();
     return response.data;
@@ -95,8 +95,8 @@ export const fetchUsers = createAsyncThunk("/auth/fetchUsers", async () => {
   }
 });
 
-const initialState: IAuthState & EntityState<IUser, string> =
-  authAdapter.getInitialState({
+const initialState: IUserState & EntityState<IUser, string> =
+  userAdapter.getInitialState({
     isLoginFormOpen: true,
     isAccountVerified: false,
     userInfo: {
@@ -112,8 +112,8 @@ const initialState: IAuthState & EntityState<IUser, string> =
     },
   });
 
-const authSlice = createSlice({
-  name: "auth",
+const userSlice = createSlice({
+  name: "users",
   initialState,
   reducers: {
     setIsLoginFormOpen: (state, action) => {
@@ -126,25 +126,25 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registerApiUser.fulfilled, (state, action) => {
-        authAdapter.addOne(state, action.payload.user);
+        userAdapter.addOne(state, action.payload.user);
         console.log(action.payload.user);
       })
 
       .addCase(loginApiUser.fulfilled, (state, action) => {
-        authAdapter.setOne(state, action.payload.user);
+        userAdapter.setOne(state, action.payload.user);
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        authAdapter.upsertMany(state, action.payload);
+        userAdapter.upsertMany(state, action.payload);
       })
 
-      .addCase(accountApiVerification.fulfilled, authAdapter.updateOne)
+      .addCase(accountApiVerification.fulfilled, userAdapter.updateOne)
 
-      .addCase(verifyApiUserEmail.fulfilled, authAdapter.addOne);
+      .addCase(verifyApiUserEmail.fulfilled, userAdapter.addOne);
   },
 });
 
 export const { selectAll: displayUsers, selectById: displayUser } =
-  authAdapter.getSelectors((state: RootState) => state.auth);
+  userAdapter.getSelectors((state: RootState) => state.users);
 
-export const { setIsLoginFormOpen, setUserInfo } = authSlice.actions;
-export default authSlice.reducer;
+export const { setIsLoginFormOpen, setUserInfo } = userSlice.actions;
+export default userSlice.reducer;

@@ -1,7 +1,7 @@
 import { IoMdSettings } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { RootState } from "../../feature/store";
-import { displayUser } from "../../feature/reducers/authSlice";
+import { displayUser } from "../../feature/reducers/userSlice";
 import { IoIosCamera } from "react-icons/io";
 
 const HeaderProfile = () => {

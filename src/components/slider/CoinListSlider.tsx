@@ -7,7 +7,7 @@ export interface ISliderCoins {
   component: JSX.Element;
 }
 
-const sliderCoin: ISliderCoins[] = [
+const CoinListSlider: ISliderCoins[] = [
   {
     id: "1",
     component: (
@@ -92,7 +92,7 @@ const sliderCoin: ISliderCoins[] = [
 
 
 const SliderCoins = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [_,setActiveIndex] = useState(0);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -120,7 +120,7 @@ const SliderCoins = () => {
     >
       
         
-        {sliderCoin.map((item) => (
+        {CoinListSlider.map((item) => (
             <div className=" flex pr-1 last:mr-0"  key={item.id}>
               {item.component}
             </div>))}

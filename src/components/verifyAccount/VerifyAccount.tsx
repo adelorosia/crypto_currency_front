@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../feature/store";
 import {
   accountApiVerification,
-} from "../../feature/reducers/authSlice";
+} from "../../feature/reducers/userSlice";
 import { NotificationService } from "../../services/notificationServices";
 
 const VerifyAccount = () => {

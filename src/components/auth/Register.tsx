@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { NotificationService } from "../../services/notificationServices";
-import { registerApiUser, setIsLoginFormOpen } from "../../feature/reducers/authSlice";
+import { registerApiUser, setIsLoginFormOpen } from "../../feature/reducers/userSlice";
 import { AppDispatch } from "../../feature/store";
 import logo from "../../assets/images/logo.png"
 

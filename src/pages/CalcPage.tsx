@@ -6,7 +6,7 @@ import { RootState } from "../feature/store";
 
 
 import { useEffect, useState } from "react";
-import { displayUser } from "../feature/reducers/authSlice";
+import { displayUser } from "../feature/reducers/userSlice";
 import ForbiddenPage from "./ForbiddenPage";
 
 const CalcPage = () => {

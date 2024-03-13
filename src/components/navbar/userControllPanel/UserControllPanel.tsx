@@ -6,7 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCalculator, FaUser } from "react-icons/fa";
 import { FaChartColumn } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { displayUser, fetchUsers, logoutApiUser } from "../../../feature/reducers/authSlice";
+import { displayUser, fetchUsers, logoutApiUser } from "../../../feature/reducers/userSlice";
 import { NotificationService } from "../../../services/notificationServices";
 import { useEffect } from "react";
 

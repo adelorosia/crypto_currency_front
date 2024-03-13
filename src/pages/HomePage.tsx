@@ -2,7 +2,7 @@ import MaxWithWrapper from "../components/MaxWithWrapper";
 import  MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
 
 
-import SliderCoins from "../components/slider/SliderCoins";
+import SliderCoins from "../components/slider/CoinListSlider";
 
 const items: ICarouselItem[] = [
   {

@@ -18,7 +18,7 @@ interface SliderProps {
 const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberItemsMobile = 1 }: SliderProps) => {
 
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [_,setActiveIndex] = useState(0);
 
     const responsive = {
         desktop: {
