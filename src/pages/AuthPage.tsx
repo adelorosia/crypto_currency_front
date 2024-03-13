@@ -8,7 +8,7 @@ import MaxWithWrapper from "../components/MaxWithWrapper";
 import { RootState } from "../feature/store";
 
 const AuthPage = () => {
-  const { isLoginFormOpen } = useSelector((state: RootState) => state.auth);
+  const { isLoginFormOpen } = useSelector((state: RootState) => state.users);
 
   return (
     <MaxWithWrapper>
