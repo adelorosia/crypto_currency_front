@@ -1,7 +1,7 @@
 const AnalyzePage = () => {
     return (
         <div>
-            Analize
+            khalil : Analize
         </div>
     );
 }
