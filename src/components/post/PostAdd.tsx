@@ -48,6 +48,7 @@ const PostAdd = () => {
 
       <div className="flex items-center justify-between mt-3 gap-2 px-5">
         <div className="flex items-center gap-2">
+          
           {/* Symbol für das Hochladen von Fotos */}
           <HiPhoto
             className={`text-3xl ${
