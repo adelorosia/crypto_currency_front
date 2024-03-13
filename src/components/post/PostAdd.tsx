@@ -6,11 +6,11 @@ import { displayUser } from "../../feature/reducers/userSlice";
 const PostAdd = () => {
   // Selektiere den aktuellen Dark-Mode-Status aus dem Redux-Store
   const { isDarkMode } = useSelector((state: RootState) => state.app);
-  const userId = localStorage.getItem("userId");
-  const user = useSelector((state: RootState) => displayUser(state, userId!));
-
   // Hole die Benutzer-ID aus dem lokalen Speicher
   const userId = localStorage.getItem("userId");
+
+
+
 
   // Selektiere den Benutzer anhand der Benutzer-ID aus dem Redux-Store
   const user = useSelector((state: RootState) => displayUser(state, userId!));

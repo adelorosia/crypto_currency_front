@@ -1,10 +1,11 @@
 import { FaRegStar } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { displayAllCoins } from "../../feature/reducers/coinSlise";
+import { displayCoins } from "../../feature/reducers/coinSlise";
+
 
 function TableCoins() {
 
-    const coins = useSelector(displayAllCoins)
+    const coins = useSelector(displayCoins)
     console.log(coins)
     
   return (
