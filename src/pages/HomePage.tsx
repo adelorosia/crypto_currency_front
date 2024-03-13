@@ -18,7 +18,7 @@ const items: ICarouselItem[] = [
   },
   {
     id: "3",
-    image: "/banner1.png",
+    image: "/binance.png",
   },
   {
     id: "4",
