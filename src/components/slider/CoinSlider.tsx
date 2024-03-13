@@ -36,17 +36,25 @@ const CoinSlider = () => {
           <div className=" coin-slider-theme p-4 flex flex-col rounded-lg w-full gap-2">
             <div className="flex items-center  gap-3">
               <img className="w-10 h-10" src={coin.image} alt="" />
-              <p>{coin.name}</p>
+              <p>{coin.name.slice(0,10)}</p>
               <p>{coin.symbol}</p>
             </div>
             <div className="flex gap-3 ">
               <span className="font-bold text-xl"></span>
-              <span className="text-xl font-bold">{coin.current_price}</span>
+              <span className="text-xl font-bold">
+                {coin.current_price.toLocaleString(undefined, {
+                  maximumFractionDigits: 3,
+                })}{" "}
+                USDT
+              </span>
             </div>
             <div className="flex gap-3">
-              <span className="">36,641.20</span>{"USD"}
-              <span className={`rounded-lg px-1 ${coin.price_change_24h<0?"bg-PRIMARY_RED":" bg-green-600"}`}>
-                {coin.price_change_24h}
+              <span
+                className={`rounded-lg px-1 w-32 text-center ${
+                  coin.price_change_24h < 0 ? "bg-PRIMARY_RED" : " bg-green-600"
+                }`}
+              >
+                {coin.price_change_24h.toLocaleString(undefined,{maximumFractionDigits:3})} $
               </span>
             </div>
           </div>
