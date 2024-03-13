@@ -1,6 +1,7 @@
 const Ghulam = () => {
     return (
         <div>
+
            <div>
             Adel
            </div>
@@ -14,6 +15,7 @@ const Ghulam = () => {
            <div>
             mohammad
            </div>
+
 
         </div>
     );
