@@ -1,7 +1,7 @@
 const Adel = () => {
     return (
         <div>
-            Adelsdfsdfes
+            Adelsdfsdfeshkj
         </div>
     );
 }
