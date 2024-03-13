@@ -2,7 +2,7 @@ import MaxWithWrapper from "../components/MaxWithWrapper";
 import  MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
 
 
-import SliderCoins from "../components/slider/CoinListSlider";
+import CoinSlider from "../components/slider/CoinSlider";
 
 const items: ICarouselItem[] = [
   {
@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <MaxWithWrapper>
       <MainSlider items={items} />
-     <div className="my-4"> <SliderCoins />fderewrew</div>
+     <div className="my-4"> <CoinSlider />fderewrew</div>
     </MaxWithWrapper>
   );
 };

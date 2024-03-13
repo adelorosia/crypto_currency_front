@@ -6,6 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { ICoin } from "../../interface";
 import { getAllCoins } from "../../services";
+import { RootState } from "../store";
 
 interface ICoinState {
   status: "idle" | "loading" | "seccess" | "failed";
@@ -50,5 +51,8 @@ const coinSlice = createSlice({
       });
   },
 });
+
+export const { selectAll: displayCoins, selectById: displayCoin } =
+  coinAdapter.getSelectors((state: RootState) => state.coins);
 
 export default coinSlice.reducer;
