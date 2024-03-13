@@ -9,7 +9,7 @@ const HeaderProfile = () => {
 
   const user = useSelector((state: RootState) => displayUser(state, userId!));
   return (
-    <div className="my-4   ">
+    <div className="my-4">
       <div className="flex gap-4 font-FONT_VIGA justify-start items-center ">
         <div className="relative">
           <img

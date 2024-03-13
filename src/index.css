@@ -10,11 +10,11 @@ body{
 }
 
 .dark-theme{
-  @apply  bg-PRIMARY_BLACK
+  @apply  bg-PRIMARY_BLACK text-PRIMARY_WHITE
 }
 
 .light-theme{
-@apply bg-PRIMARY_WHITE
+@apply bg-PRIMARY_WHITE text-SECONDARY_BLACK
 }
 
 .coin-slider-theme{

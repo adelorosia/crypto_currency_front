@@ -38,7 +38,7 @@ const Slider = ({ items, numberItemsDesktop = 1, numberItemsTablet = 1, numberIt
 
   const CustomDot = ({ onClick, active }: any) => (
     <button
-      className={`w-4 h-4 rounded-full focus:outline-none m-2 ${
+      className={`w-2 h-2 rounded-full focus:outline-none m-2 hidden lg:flex ${
         active ? " bg-SECONDARY_BLUE" : " bg-SECONDARY_GRAY"
       }`}
       onClick={onClick}

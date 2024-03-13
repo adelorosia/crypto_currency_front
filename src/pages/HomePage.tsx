@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <MaxWithWrapper>
       <MainSlider items={items} />
-     <div className="my-4"> <SliderCoins /></div>
+     <div className="my-4"> <SliderCoins />fderewrew</div>
     </MaxWithWrapper>
   );
 };

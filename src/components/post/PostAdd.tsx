@@ -14,7 +14,7 @@ const PostAdd = () => {
   const { isDarkMode } = useSelector((state: RootState) => state.app);
 
   return (
-    <div className="w-full h-36 my-4 bg-bg-PRIMARY_WHITE rounded-lg">
+    <div className={`w-full h-36 my-4 rounded-lg ${isDarkMode?" bg-SECONDARY_BLACK":" bg-SECONDARY_WHITE "}`}>
       {items.map((item) => (
         <div key={item.id}>
           <div className="flex gap-2 px-3 py-5 ">
@@ -24,7 +24,7 @@ const PostAdd = () => {
               alt=""
             />
             <input
-              className="w-full h-[46px] rounded-full pl-2"
+              className={`w-full h-[46px] rounded-full px-5 font-FONT_VIGA text-lg ${isDarkMode?" bg-PRIMARY_BLACK":" bg-PRIMARY_WHITE"}`}
               type="text"
               placeholder={`Whats on your mind , ${item.firstName}?`}
             />
@@ -33,7 +33,7 @@ const PostAdd = () => {
         </div>
       ))}
       <div
-        className="flex items-center justify-center mt-3 gap-2"
+        className="flex items-center justify-start mt-3 gap-2 px-5"
       >
         <HiPhoto
           className={`text-3xl ${
