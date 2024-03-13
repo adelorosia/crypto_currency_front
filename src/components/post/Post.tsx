@@ -8,10 +8,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../feature/store";
 import { displayUser } from "../../feature/reducers/userSlice";
 
+
 const Post = () => {
   const { isDarkMode } = useSelector((state: RootState) => state.app);
   const userId = localStorage.getItem("userId");
   const user = useSelector((state: RootState) => displayUser(state, userId!));
+
 
   return (
     <div
@@ -21,6 +23,7 @@ const Post = () => {
     >
       <div className=" flex justify-between items-center px-2">
         <div className="flex gap-2">
+
           <div>
             <img
               className="w-[50px] h-[50px] rounded-full"
@@ -32,6 +35,7 @@ const Post = () => {
             <p>{user.firstName}</p>
             <p className="text-slate-400 text-xs">March 8 at 5:00 AM</p>
           </div>
+
         </div>
         <div className="flex items-center text-2xl gap-2">
           <BiDotsHorizontalRounded />
@@ -50,8 +54,10 @@ const Post = () => {
       </div>
       <div className="flex justify-between items-center px-3 mt-2">
         <div className="flex items-center gap-2">
+
           <BiSolidLike />
           <p>like</p>
+
         </div>
         <div className="flex gap-2">
           <span className="flex items-center gap-2">
@@ -67,12 +73,15 @@ const Post = () => {
       <div className="border border-b-1 border-gray-200  my-2 mx-3" />
       <div>
         <div className=" flex justify-around">
+
           <BiLike className="text-2xl hover:animate-bounce" />
           <FaRegComment className="text-2xl hover:animate-bounce" />
+
         </div>
         <div className="border border-b-1 my-2 border-gray-200 mx-3" />
       </div>
       <div className="flex w-full px-3 gap-2">
+
         <img
           className="w-[40px] h-[40px] rounded-full"
           src={user.profile_photo}
@@ -86,6 +95,7 @@ const Post = () => {
           type="text"
           placeholder="comment..."
         />
+
       </div>
     </div>
   );
