@@ -1,7 +1,7 @@
 const Ghulam = () => {
     return (
         <div>
-            ghulam
+            Adel
         </div>
     );
 }
