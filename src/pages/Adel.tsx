@@ -10,6 +10,11 @@ const Ghulam = () => {
            <div>
             Khalil
            </div>
+
+           <div>
+            mohammad
+           </div>
+
         </div>
     );
 }
