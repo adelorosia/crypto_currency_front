@@ -11,10 +11,11 @@ import { RootState } from "../store";
 interface ICoinState {
   status: "idle" | "loading" | "success" | "failed"; 
   error: string | null;
+  coinId:string;
 }
 
 const coinAdapter = createEntityAdapter<ICoin, string>({
-  selectId: (coin) => coin._id, 
+  selectId: (coin) => coin.id, 
 });
 
 export const fetchCoins = createAsyncThunk(
@@ -33,12 +34,17 @@ const initialState: ICoinState & EntityState<ICoin, string> =
   coinAdapter.getInitialState({
     status: "idle",
     error: "",
+    coinId:""
   });
 
 const coinSlice = createSlice({
   name: "coins",
   initialState,
-  reducers: {},
+  reducers: {
+    setCoinId:(state,action)=>{
+      state.coinId=action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCoins.pending, (state) => {
@@ -55,6 +61,8 @@ const coinSlice = createSlice({
   },
 });
 
+
+export const {setCoinId} = coinSlice.actions
 
 export const { selectAll: displayCoins, selectById: displayCoin } =
   coinAdapter.getSelectors((state: RootState) => state.coins);

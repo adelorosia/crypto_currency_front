@@ -10,6 +10,7 @@ import VerifyAccountPage from "../pages/VerifyAccountPage";
 import NotFound from "../pages/NotFoundPage";
 import UserProfilePage from "../pages/UserProfilePage";
 import App from "../App";
+import CoinPage from "../pages/CoinPage";
 
 
 export const router = createBrowserRouter([
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/analyze",
         element: <AnalyzePage />,
+      },
+      {
+        path: "/coin/:coinId",
+        element: <CoinPage />,
       },
       {
         path: "/news",

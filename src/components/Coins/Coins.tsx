@@ -1,15 +1,20 @@
 import { FaRegStar } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../feature/store";
-import { displayCoins } from "../../feature/reducers/coinSlice";
+import {  displayCoins, setCoinId } from "../../feature/reducers/coinSlice";
 import Chart from "chart.js/auto";
 import { useEffect, useRef } from "react";
 import { ICoin } from "../../interface";
+import { useNavigate } from "react-router-dom";
 
 function Coins() {
   const coins = useSelector(displayCoins);
   const { isDarkMode } = useSelector((state: RootState) => state.app);
   const chartRefs = useRef<HTMLCanvasElement[]>([]);
+
+  
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
   const renderChart = (canvas: HTMLCanvasElement, item: ICoin) => {
     const ctx = canvas.getContext("2d");
@@ -38,10 +43,10 @@ function Coins() {
             label: "Sparkline",
             data: sparklineData,
             borderColor: sparklineData.map((price, index, array) => {
-              // Wenn es sich um den ersten Punkt handelt, gibt es keine vorherigen Daten.
+             
               if (index === 0) return "rgb(255, 99, 132)"; // Rot
 
-              // Vergleiche den aktuellen Preis mit dem vorherigen Preis.
+            
               const prevPrice = array[index - 1];
               return price > prevPrice
                 ? "rgb(75, 192, 192)"
@@ -112,8 +117,14 @@ function Coins() {
         <tbody className="text-sm">
           {coins.slice(0, 10).map((coin, index) => (
             <tr
-              className="border-b last:border-b-0 border-gray-200"
+              className="border-b last:border-b-0 border-gray-200 cursor-pointer"
               key={coin._id}
+              onClick={()=>{
+                dispatch(setCoinId(coin.id))
+                console.log("dispatch",coin.id)
+                navigate(`/coin/${coin.id}`)
+                
+              }}
             >
               <td className="">
                 <FaRegStar />
