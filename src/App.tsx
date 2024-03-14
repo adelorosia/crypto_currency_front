@@ -12,6 +12,7 @@ import { AppDispatch, RootState } from "./feature/store";
 import SidebarMenu from "./components/navbar/menu/SidebarMenu";
 import { useEffect } from "react";
 import { displayUsers } from "./feature/reducers/userSlice";
+import Footer from "./components/footer/Footer";
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(
@@ -81,7 +82,10 @@ const App = () => {
         <main className=" min-h-screen w-full">
           <Outlet />
         </main>
-        <footer>footer</footer>
+        <footer>
+
+          <Footer />
+        </footer>
       </div>
       <ToastContainer />
     </div>
