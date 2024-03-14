@@ -18,7 +18,14 @@ const HeaderProfile = () => {
             alt=""
           />
           <div className="bg-SECONDARY_GRAY absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
-            <IoIosCamera className="icon text-2xl " />
+            <input
+              id="fileInput"
+              className="hidden cursor-pointer"
+              type="file"
+            />
+            <label className=" cursor-pointer" htmlFor="fileInput">
+              <IoIosCamera className="icon text-2xl" />
+            </label>
           </div>
         </div>
 

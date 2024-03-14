@@ -58,4 +58,8 @@ export const getAllUsers = () => {
   return axios.get(url);
 };
 
-
+//Change Profile Photo
+export const changeProfilePhoto = () => {
+  const url = `${SERVER_URL}/users/profile_photo_upload`;
+  return axiosJWT.put(url);
+};

@@ -65,7 +65,7 @@ const userId=localStorage.getItem("userId")
           event.isPropagationStopped();
         }}
       >
-        <img className="icon" src={user?.profile_photo} alt="" />
+        <img className="icon rounded-full" src={user?.profile_photo} alt="" />
         <div
           className={`hidden lg:flex text-lg gap-1 font-FONT_VIGA ${
             isDarkMode ? "  text-PRIMARY_GRAY" : "text-PRIMARY_WHITE"

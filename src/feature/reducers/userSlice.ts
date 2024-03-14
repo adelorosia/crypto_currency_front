@@ -8,6 +8,7 @@ import { IUser, IUserInfo, TUser } from "../../interface";
 
 import {
   accountVerification,
+  changeProfilePhoto,
   getAllUsers,
   loginUser,
   logoutUser,
@@ -95,6 +96,18 @@ export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
   }
 });
 
+export const changeProfilePhotoApiUser = createAsyncThunk(
+  "/users/changeProfilePhotoApiUser",
+  async () => {
+    try {
+      const response = await changeProfilePhoto();
+      return response.data;
+    } catch (error: any) {
+      throw error.response.data.message;
+    }
+  }
+);
+
 const initialState: IUserState & EntityState<IUser, string> =
   userAdapter.getInitialState({
     isLoginFormOpen: true,
@@ -139,7 +152,9 @@ const userSlice = createSlice({
 
       .addCase(accountApiVerification.fulfilled, userAdapter.updateOne)
 
-      .addCase(verifyApiUserEmail.fulfilled, userAdapter.addOne);
+      .addCase(verifyApiUserEmail.fulfilled, userAdapter.addOne)
+
+      .addCase(changeProfilePhotoApiUser.fulfilled, userAdapter.updateOne);
   },
 });
 
