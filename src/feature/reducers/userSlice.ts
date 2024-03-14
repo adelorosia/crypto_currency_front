@@ -98,9 +98,9 @@ export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
 
 export const changeProfilePhotoApiUser = createAsyncThunk(
   "/users/changeProfilePhotoApiUser",
-  async () => {
+  async (image:string) => {
     try {
-      const response = await changeProfilePhoto();
+      const response = await changeProfilePhoto(image);
       return response.data;
     } catch (error: any) {
       throw error.response.data.message;
