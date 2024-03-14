@@ -5,6 +5,7 @@ import Coins from "../components/Coins/Coins";
 import { useParams } from "react-router-dom";
 import {  setCoinId } from "../feature/reducers/coinSlice";
 import { useEffect } from "react";
+import MaxWithWrapper from "../components/MaxWithWrapper";
 
 
 const CoinPage = () => {
@@ -16,11 +17,11 @@ useEffect(()=>{
 dispatch(setCoinId(coinId))
 },[dispatch,coinId]) 
   return (
-    <div>
+    <MaxWithWrapper>
      {coinId === undefined ? <Coins /> : <Coin/>} 
       {/* <Coins> ||< <Coin> */}
     
-    </div>
+    </MaxWithWrapper>
   );
 };
 

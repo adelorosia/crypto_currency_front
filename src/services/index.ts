@@ -59,7 +59,11 @@ export const getAllUsers = () => {
 };
 
 //Change Profile Photo
-export const changeProfilePhoto = (image:string) => {
+export const profilePhotoUpload = (data: any, token: string) => {
   const url = `${SERVER_URL}/users/profile_photo_upload`;
-  return axiosJWT.put(url,image);
+  return axiosJWT.put(url, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };

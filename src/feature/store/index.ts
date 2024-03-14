@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import userReducer, { fetchUsers } from "../reducers/userSlice";
+import userReducer, { fetchUsers, setToken } from "../reducers/userSlice";
 import appReducer from "../reducers/appSlice";
 import coinReducer, { fetchCoins } from "../reducers/coinSlice";
 import { axiosJWT, refreshToken } from "../../services";
@@ -31,7 +31,7 @@ axiosJWT.interceptors.request.use(
       const response = await refreshToken();
       console.log("response: ",response.data);
       config.headers.Authorization = `Bearer ${response.data.refreshToken}`;
-      // store.dispatch(setToken(response.data.refreshToken));
+      store.dispatch(setToken(response.data.refreshToken));
       // store.dispatch(setUserInfoRefresh(response.data.userInfo_refresh));
     }
     return config;

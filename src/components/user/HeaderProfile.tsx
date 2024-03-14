@@ -1,31 +1,44 @@
 import { IoMdSettings } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { AppDispatch, RootState } from "../../feature/store";
 import { useSelector } from "react-redux";
-import { changeProfilePhotoApiUser, displayUser } from "../../feature/reducers/userSlice";
+import {
+  profilePhotoUploadApi,
+  displayUser,
+} from "../../feature/reducers/userSlice";
 import { IoIosCamera } from "react-icons/io";
 
 const HeaderProfile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const userId = localStorage.getItem("userId");
-  const [selectedFile, setSelectedFile] = useState<string>("");
-
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [file, setFile] = useState("");
+  const [showBtn, setShowBtn] = useState(false);
   const user = useSelector((state: RootState) => displayUser(state, userId!));
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files;
-    if (fileList && fileList.length > 0) {
-      const fileName = fileList[0].name;
- 
-     dispatch(changeProfilePhotoApiUser(fileName))
+  const { token } = useSelector((state: RootState) => state.users);
+  const handleClick = () => {
+    if (inputRef.current !== null) {
+      inputRef.current.click();
+      setShowBtn(true);
     }
   };
-  
-
-
-
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files !== null && e.target.files.length > 0) {
+      const selectedFile = e.target.files[0].name;
+      setFile(selectedFile);
+      // استفاده از selectedFile
+    }
+  };
+  console.log("token: ", token);
+  const loadImage = async () => {
+    const response = await dispatch(
+      profilePhotoUploadApi({ data: file, token: token })
+    ).unwrap();
+    console.log(response.message);
+    setShowBtn(false);
+  };
   return (
     <div className="my-4">
       <div className="flex gap-4 font-FONT_VIGA justify-start items-center ">
@@ -35,16 +48,24 @@ const HeaderProfile = () => {
             src={user?.profile_photo}
             alt=""
           />
-          <div className="bg-SECONDARY_GRAY absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
-            <input
-              id="fileInput"
-              className="hidden cursor-pointer"
-              type="file"
-              onChange={handleFileChange}
-            />
-            <label className="cursor-pointer" htmlFor="fileInput">
-              <IoIosCamera className="icon text-2xl" />
-            </label>
+          <div className="flex items-center bg-SECONDARY_GRAY/80 absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
+            {showBtn ? (
+              <button onClick={loadImage}>Upload</button>
+            ) : (
+              <div>
+                <button onClick={handleClick}>
+                  <IoIosCamera className="icon text-2xl" />
+                </button>
+                <input
+                  name="file"
+                  className="cursor-pointer"
+                  type="file"
+                  hidden
+                  ref={inputRef}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
           </div>
         </div>
 
