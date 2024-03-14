@@ -6,7 +6,7 @@ import Chart from "chart.js/auto";
 import { useEffect, useRef } from "react";
 import { ICoin } from "../../interface";
 
-function TableCoins() {
+function Coins() {
   const coins = useSelector(displayCoins);
   const { isDarkMode } = useSelector((state: RootState) => state.app);
   const chartRefs = useRef<HTMLCanvasElement[]>([]);
@@ -170,4 +170,4 @@ function TableCoins() {
   );
 }
 
-export default TableCoins;
+export default Coins;

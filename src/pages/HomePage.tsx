@@ -1,7 +1,7 @@
 import MaxWithWrapper from "../components/MaxWithWrapper";
 import MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
 
-import TableCoins from "../components/tableCoins/TableCoins";
+import Coins from "../components/Coins/Coins";
 
 import CoinSlider from "../components/slider/CoinSlider";
 import { useSelector } from "react-redux";
@@ -37,7 +37,7 @@ const HomePage = () => {
   
       </div>
       <div className={`mt-4 pt-5 px-5 rounded-md${isDarkMode?"  bg-BLACK":" bg-SECONDARY_WHITE "}`}>
-        <TableCoins />
+        <Coins />
       </div>
     </MaxWithWrapper>
   );
