@@ -10,7 +10,7 @@ const Footer = () => {
   const { isDarkMode } = useSelector((state: RootState) => state.app);
   return (
     <div
-      className={` mt-4 font-FONT_VIGA ${
+      className={` mt-4 px-3 font-FONT_VIGA ${
         isDarkMode ? "bg-SECONDARY_BLACK" : "bg-SECONDARY_WHITE"
       }`}
     >

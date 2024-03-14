@@ -6,6 +6,7 @@ import Coins from "../components/Coins/Coins";
 import CoinSlider from "../components/slider/CoinSlider";
 import { useSelector } from "react-redux";
 import { RootState } from "../feature/store";
+import News from "../components/news/News";
 
 const items: ICarouselItem[] = [
   {
@@ -38,6 +39,9 @@ const HomePage = () => {
       </div>
       <div className={`mt-4 pt-5 px-5 rounded-md${isDarkMode?"  bg-BLACK":" bg-SECONDARY_WHITE "}`}>
         <Coins />
+      </div>
+      <div>
+        <News />
       </div>
     </MaxWithWrapper>
   );
