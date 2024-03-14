@@ -10,10 +10,15 @@ import {
 } from "./feature/reducers/appSlice";
 import { AppDispatch, RootState } from "./feature/store";
 import SidebarMenu from "./components/navbar/menu/SidebarMenu";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { displayUsers } from "./feature/reducers/userSlice";
 import Footer from "./components/footer/Footer";
+import UpAndDown from "./components/upAndDownButton/UpAndDown";
+
+
 const App = () => {
+
+  const goTopRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(
     (state: RootState) => state.app
@@ -44,6 +49,7 @@ const App = () => {
       className={`w-full min-h-screen relative ${
         isDarkMode ? "dark-theme" : " light-theme"
       }`}
+      ref={goTopRef}
     >
       <div
         className={`${
@@ -83,8 +89,8 @@ const App = () => {
           <Outlet />
         </main>
         <footer>
-
           <Footer />
+          <UpAndDown goTopRef={goTopRef} />
         </footer>
       </div>
       <ToastContainer />
@@ -93,10 +99,3 @@ const App = () => {
   );
 };
 export default App;
-
-
-
-
-
-
-
