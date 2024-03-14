@@ -30,13 +30,13 @@ const Post = () => {
           <div>
             <img
               className="w-[50px] h-[50px] rounded-full"
-              src={user.profile_photo}
+              src={user?.profile_photo}
               alt=""
             />
           </div>
           {/* Benutzername und Zeitstempel */}
           <div className="flex flex-col">
-            <p>{user.firstName}</p>
+            <p>{user?.firstName}</p>
             <p className="text-slate-400 text-xs">March 8 at 5:00 AM</p>
           </div>
         </div>
@@ -98,7 +98,7 @@ const Post = () => {
         {/* Profilbild und Kommentareingabefeld */}
         <img
           className="w-[40px] h-[40px] rounded-full"
-          src={user.profile_photo}
+          src={user?.profile_photo}
           alt=""
         />
         <input

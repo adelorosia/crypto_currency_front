@@ -7,6 +7,7 @@ import CoinSlider from "../components/slider/CoinSlider";
 import { useSelector } from "react-redux";
 import { RootState } from "../feature/store";
 import News from "../components/news/News";
+import HomeJournal from "../components/homeJournal/HomeJournal";
 
 const items: ICarouselItem[] = [
   {
@@ -42,6 +43,9 @@ const HomePage = () => {
       </div>
       <div>
         <News />
+      </div>
+      <div>
+        <HomeJournal />
       </div>
     </MaxWithWrapper>
   );

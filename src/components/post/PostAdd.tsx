@@ -39,7 +39,7 @@ const PostAdd = () => {
             }`}
             type="text"
             // Platzhaltertext für das Eingabefeld
-            placeholder={`What's on your mind, ${user.firstName}?`}
+            placeholder={`What's on your mind, ${user?.firstName}?`}
           />
         </div>
         {/* Trennlinie */}
