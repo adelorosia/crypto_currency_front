@@ -14,7 +14,10 @@ const HeaderProfile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const userId = localStorage.getItem("userId");
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [file, setFile] = useState("");
+
+  const [file, setFile] = useState<File | null>(null);
+
+
   const [showBtn, setShowBtn] = useState(false);
   const user = useSelector((state: RootState) => displayUser(state, userId!));
   const { token } = useSelector((state: RootState) => state.users);
@@ -22,23 +25,38 @@ const HeaderProfile = () => {
     if (inputRef.current !== null) {
       inputRef.current.click();
       setShowBtn(true);
+
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null && e.target.files.length > 0) {
-      const selectedFile = e.target.files[0].name;
+      const selectedFile = e.target.files[0];
       setFile(selectedFile);
       // استفاده از selectedFile
     }
   };
   console.log("token: ", token);
   const loadImage = async () => {
-    const response = await dispatch(
-      profilePhotoUploadApi({ data: file, token: token })
-    ).unwrap();
-    console.log(response.message);
-    setShowBtn(false);
+    if (file !== null) {
+      console.log("file: ", file);
+      try {
+        const response = await dispatch(
+          profilePhotoUploadApi(file)
+        ).unwrap();
+        console.log(response.message);
+        setShowBtn(false);
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    } else {
+      console.log("فایل مقداردهی نشده است.");
+    }
   };
+  
+
+    }
+  };
+
   return (
     <div className="my-4">
       <div className="flex gap-4 font-FONT_VIGA justify-start items-center ">
@@ -49,9 +67,11 @@ const HeaderProfile = () => {
             alt=""
           />
           <div className="flex items-center bg-SECONDARY_GRAY/80 absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
-            {showBtn ? (
+
+          
               <button onClick={loadImage}>Upload</button>
-            ) : (
+         
+
               <div>
                 <button onClick={handleClick}>
                   <IoIosCamera className="icon text-2xl" />
@@ -65,7 +85,7 @@ const HeaderProfile = () => {
                   onChange={handleChange}
                 />
               </div>
-            )}
+
           </div>
         </div>
 

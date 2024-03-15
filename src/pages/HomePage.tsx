@@ -1,7 +1,7 @@
 import MaxWithWrapper from "../components/MaxWithWrapper";
 import MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
 
-import Coins from "../components/Coins/Coins";
+import Coins from "../components/coins/Coins";
 
 import CoinSlider from "../components/slider/CoinSlider";
 import { useSelector } from "react-redux";

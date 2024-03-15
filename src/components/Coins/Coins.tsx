@@ -45,7 +45,7 @@ function Coins() {
             borderColor: sparklineData.map((price, index, array) => {
              
               if (index === 0) return "rgb(255, 99, 132)"; // Rot
-
+console.log("Coins: ","Adel")
             
               const prevPrice = array[index - 1];
               return price > prevPrice

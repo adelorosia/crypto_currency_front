@@ -21,7 +21,7 @@ interface IUserState {
   isLoginFormOpen: boolean;
   isAccountVerified: boolean;
   userInfo: IUserInfo;
-  token:string
+
 }
 
 const userAdapter = createEntityAdapter<IUser, string>({
@@ -99,12 +99,11 @@ export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
 
 export const profilePhotoUploadApi = createAsyncThunk(
   "/users/profilePhotoUploadApi",
-  async (payload: { data: any; token: string }) => {
+
+  async (data: File) => {
     try {
-      const formData = new FormData();
-      formData.append("image", payload.data);
-      console.log(formData)
-      const response = await profilePhotoUpload(formData, payload.token);
+      const response = await profilePhotoUpload(data);
+
       return response.data;
     } catch (error: any) {
       throw error.response.data.message;
@@ -112,11 +111,13 @@ export const profilePhotoUploadApi = createAsyncThunk(
   }
 );
 
+
 const initialState: IUserState & EntityState<IUser, string> =
   userAdapter.getInitialState({
     isLoginFormOpen: true,
     isAccountVerified: false,
-    token:"",
+
+    token: "",
     userInfo: {
       userId: "",
       firstName: "",
@@ -169,5 +170,7 @@ const userSlice = createSlice({
 export const { selectAll: displayUsers, selectById: displayUser } =
   userAdapter.getSelectors((state: RootState) => state.users);
 
+
 export const { setIsLoginFormOpen, setUserInfo,setToken } = userSlice.actions;
+
 export default userSlice.reducer;

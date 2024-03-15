@@ -1,7 +1,8 @@
 import axios from "axios";
 import { TUser } from "../interface";
 
-const SERVER_URL = "https://crypto-currency-db.orosia.online/api/v1";
+
+const SERVER_URL = "http://localhost:3005/api/v1";
 
 export const axiosJWT = axios.create();
 axiosJWT.interceptors.request.use;
@@ -59,11 +60,13 @@ export const getAllUsers = () => {
 };
 
 //Change Profile Photo
-export const profilePhotoUpload = (data: any, token: string) => {
+
+export const profilePhotoUpload = (data: File) => {
+  console.log("data: ",data)
   const url = `${SERVER_URL}/users/profile_photo_upload`;
-  return axiosJWT.put(url, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const formData = new FormData();
+  formData.append("image", data);
+  console.log("formData: ",formData)
+  return axiosJWT.put(url, formData);
+
 };
