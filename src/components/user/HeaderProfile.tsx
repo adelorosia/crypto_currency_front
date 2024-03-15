@@ -17,7 +17,6 @@ const HeaderProfile = () => {
 
   const [file, setFile] = useState<File | null>(null);
 
-
   const [showBtn, setShowBtn] = useState(false);
   const user = useSelector((state: RootState) => displayUser(state, userId!));
   const { token } = useSelector((state: RootState) => state.users);
@@ -25,7 +24,6 @@ const HeaderProfile = () => {
     if (inputRef.current !== null) {
       inputRef.current.click();
       setShowBtn(true);
-
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,9 +38,7 @@ const HeaderProfile = () => {
     if (file !== null) {
       console.log("file: ", file);
       try {
-        const response = await dispatch(
-          profilePhotoUploadApi(file)
-        ).unwrap();
+        const response = await dispatch(profilePhotoUploadApi(file)).unwrap();
         console.log(response.message);
         setShowBtn(false);
       } catch (error: any) {
@@ -50,10 +46,6 @@ const HeaderProfile = () => {
       }
     } else {
       console.log("فایل مقداردهی نشده است.");
-    }
-  };
-  
-
     }
   };
 
@@ -67,25 +59,21 @@ const HeaderProfile = () => {
             alt=""
           />
           <div className="flex items-center bg-SECONDARY_GRAY/80 absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
+            <button onClick={loadImage}>Upload</button>
 
-          
-              <button onClick={loadImage}>Upload</button>
-         
-
-              <div>
-                <button onClick={handleClick}>
-                  <IoIosCamera className="icon text-2xl" />
-                </button>
-                <input
-                  name="file"
-                  className="cursor-pointer"
-                  type="file"
-                  hidden
-                  ref={inputRef}
-                  onChange={handleChange}
-                />
-              </div>
-
+            <div>
+              <button onClick={handleClick}>
+                <IoIosCamera className="icon text-2xl" />
+              </button>
+              <input
+                name="file"
+                className="cursor-pointer"
+                type="file"
+                hidden
+                ref={inputRef}
+                onChange={handleChange}
+              />
+            </div>
           </div>
         </div>
 

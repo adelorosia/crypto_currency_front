@@ -21,7 +21,7 @@ interface IUserState {
   isLoginFormOpen: boolean;
   isAccountVerified: boolean;
   userInfo: IUserInfo;
-
+  token: string;
 }
 
 const userAdapter = createEntityAdapter<IUser, string>({
@@ -111,7 +111,6 @@ export const profilePhotoUploadApi = createAsyncThunk(
   }
 );
 
-
 const initialState: IUserState & EntityState<IUser, string> =
   userAdapter.getInitialState({
     isLoginFormOpen: true,
@@ -170,7 +169,6 @@ const userSlice = createSlice({
 export const { selectAll: displayUsers, selectById: displayUser } =
   userAdapter.getSelectors((state: RootState) => state.users);
 
-
-export const { setIsLoginFormOpen, setUserInfo,setToken } = userSlice.actions;
+export const { setIsLoginFormOpen, setUserInfo, setToken } = userSlice.actions;
 
 export default userSlice.reducer;
