@@ -109,8 +109,8 @@ function Coins() {
             <th className="">#</th>
             <th className="">Name</th>
             <th className=" ">Last Price</th>
-            <th className="hidden ">24h %</th>
-            <th className="hidden ">Market Cap</th>
+            <th className="hidden md:flex ">24h %</th>
+            <th className="hidden md:flex ">Market Cap</th>
             <th className=" ">Chart</th>
           </tr>
         </thead>
@@ -150,7 +150,7 @@ function Coins() {
                 $
               </td>
               <td
-                className={`hidden ${
+                className={`hidden md:flex ${
                   coin!.market_cap_change_percentage_24h > 0
                     ? "text-green-500"
                     : "text-red-500"

@@ -6,10 +6,11 @@ import NotFound from "../../pages/NotFoundPage";
 import { ICoin } from "../../interface";
 import { useEffect, useRef } from "react";
 
+
 const Coin = () => {
   const { coinId } = useSelector((state: RootState) => state.coins);
   const coin = useSelector((state: RootState) => displayCoin(state, coinId));
-
+  const { isDarkMode } = useSelector((state: RootState) => state.app);
   const chartRef = useRef<HTMLCanvasElement>(null);
 
   const renderChart = (canvas: HTMLCanvasElement, item: ICoin) => {
@@ -56,25 +57,63 @@ const Coin = () => {
         responsive: true,
         plugins: {
           legend: {
-            display: false,
+            display: false, // Anpassen der Legende
           },
           title: {
             display: true,
-            text: "",
+            text: "Price Chart", // Anpassen des Titels
+            font: {
+              size: 16,
+              weight: "bold",
+              family: "Arial",
+              color: "#333", // Anpassen der Schriftart und -farbe
+            },
+          },
+          tooltip: {
+            enabled: true,
+            mode: "index",
+            intersect: false,
+            backgroundColor: "rgba(0,0,0,0.7)",
+            titleFont: {
+              size: 14,
+              weight: "bold",
+              family: "Arial",
+              color: "#fff", // Anpassen des Tooltipps
+            },
           },
         },
         scales: {
-            x: {
-              display: true,
+          x: {
+            display: false,
+            grid: {
+              color: "#eee", // Anpassen des Gitters
             },
-            y: {
+          },
+          y: {
+            display: true,
+            title: {
               display: true,
-              title: {
-                display: true,
-                text: "Price",
-              }
+              text: "Price",
+              font: {
+                size: 14,
+                weight: "bold",
+                family: "Arial",
+                color: "#333", // Anpassen der Achsenbeschriftung
+              },
+            },
+          },
+        },
+        animations: {
+          tension: {
+            duration: 1000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
       },
-  }}});
+    });
   };
 
   useEffect(() => {
@@ -85,32 +124,67 @@ const Coin = () => {
 
   if (coin) {
     return (
-      <div className="flex justify-center items-rounded w-full gap-3">
-        <div className="border-r-2 border-gray-300 p-4 w-2/3 ">
+      <div className={`flex justify-center items-rounded w-full gap-3 `}>
+        <div className="border-r-2  p-4 w-2/3 ">
           <h1 className="text-4xl font-bold mb-6 text-center">CryptoHunter</h1>
           <div className="flex flex-col items-center gap-2">
             <img src={coin.image} alt="" />
             <p className="text-lg font-semibold">{coin?.name}</p>
-            <p className="text-sm text-center leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nam
-              soluta reiciendis voluptate sint porro, delectus minus deserunt
-              veniam alias.
+            <p className="text-2xl text-center leading-relaxed">
+              <span className=" font-FONT_VIGA font-semibold">
+                Market_cap_rank:
+              </span>{" "}
+              {coin?.market_cap_rank}
             </p>
           </div>
-          <div className="text-lg mt-8">
-            <p className="flex items-center">
-              <span className="font-semibold mr-2">Rank:</span>
-              <span>2</span>
-            </p>
-            <p className="flex items-center mt-2">
-              <span className="font-semibold mr-2">{coin?.current_price}</span>
-              <span>$24,000</span>
-            </p>
-            <p className="flex items-center mt-2">
-              <span className="font-semibold mr-2">{coin?.market_cap}</span>
-              <span>$24,000,000</span>
-            </p>
-          </div>
+          <div className={`flex items-start justify-center mt-8 gap-8`}>
+  <div className="flex-1 rounded-lg bg-SECONDARY_ORANGE p-6 shadow-md">
+    <p className="text-lg font-semibold mb-4">Name</p>
+    <p className="text-lg">{coin?.name}</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Symbol</p>
+    <p className="text-lg">{coin?.symbol}</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Current Price</p>
+    <p className="text-lg">{coin?.current_price}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Market Cap</p>
+    <p className="text-lg">{coin?.market_cap}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Market Cap Rank</p>
+    <p className="text-lg">{coin?.market_cap_rank}</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Total Volume</p>
+    <p className="text-lg">{coin?.total_volume}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">High 24h</p>
+    <p className="text-lg">{coin?.high_24h}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Low 24h</p>
+    <p className="text-lg">{coin?.low_24h}$</p>
+  </div>
+  <div className="flex-1 rounded-lg bg-SECONDARY_ORANGE p-6 shadow-md">
+    <p className="text-lg font-semibold mb-4">Price Change 24h</p>
+    <p className="text-lg">{coin?.price_change_24h}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">
+      Price Change Percentage 24h
+    </p>
+    <p className="text-lg">{coin?.price_change_percentage_24h}%</p>
+    <p className="text-lg font-semibold mt-6 mb-4">
+      Market Cap Change 24h
+    </p>
+    <p className="text-lg">{coin?.market_cap_change_24h}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">
+      Market Cap Change Percentage 24h
+    </p>
+    <p className="text-lg">
+      {coin?.market_cap_change_percentage_24h}%
+    </p>
+    <p className="text-lg font-semibold mt-6 mb-4">
+      Circulating Supply
+    </p>
+    <p className="text-lg">{coin?.circulating_supply}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Total Supply</p>
+    <p className="text-lg">{coin?.total_supply}$</p>
+    <p className="text-lg font-semibold mt-6 mb-4">Max Supply</p>
+    <p className="text-lg">{coin?.max_supply}$</p>
+  </div>
+</div>
+
+
         </div>
         <div className="w-full h-82">
           <canvas
