@@ -11,6 +11,8 @@ import NotFound from "../pages/NotFoundPage";
 import UserProfilePage from "../pages/UserProfilePage";
 import App from "../App";
 import CoinPage from "../pages/CoinPage";
+import { ShowImage } from "../pages/ShowImage";
+
 
 
 export const router = createBrowserRouter([
@@ -58,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <UserProfilePage />,
+      },
+      {
+        path: "/profile_change",
+        element: <ShowImage />,
       },
     ],
   },

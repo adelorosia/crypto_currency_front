@@ -22,10 +22,11 @@ interface IUserState {
   isAccountVerified: boolean;
   userInfo: IUserInfo;
   token: string;
+  file: File | null;
 }
 
-const userAdapter = createEntityAdapter<IUser, string>({
-  selectId: (user) => user._id,
+const userAdapter = createEntityAdapter({
+  selectId: (user: IUser) => user._id,
 });
 
 export const registerApiUser = createAsyncThunk(
@@ -103,7 +104,7 @@ export const profilePhotoUploadApi = createAsyncThunk(
   async (data: File) => {
     try {
       const response = await profilePhotoUpload(data);
-
+      console.log("Profile Photo UserSlice: ", response.data.user);
       return response.data;
     } catch (error: any) {
       throw error.response.data.message;
@@ -115,7 +116,7 @@ const initialState: IUserState & EntityState<IUser, string> =
   userAdapter.getInitialState({
     isLoginFormOpen: true,
     isAccountVerified: false,
-
+    file: null,
     token: "",
     userInfo: {
       userId: "",
@@ -143,6 +144,9 @@ const userSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    setFile: (state, action) => {
+      state.file = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -154,21 +158,24 @@ const userSlice = createSlice({
       .addCase(loginApiUser.fulfilled, (state, action) => {
         userAdapter.setOne(state, action.payload.user);
       })
+
+      .addCase(profilePhotoUploadApi.fulfilled, (state, action) => {
+        userAdapter.setOne(state, action.payload.user);
+      })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         userAdapter.upsertMany(state, action.payload);
       })
 
       .addCase(accountApiVerification.fulfilled, userAdapter.updateOne)
 
-      .addCase(verifyApiUserEmail.fulfilled, userAdapter.addOne)
-
-      .addCase(profilePhotoUploadApi.fulfilled, userAdapter.updateOne);
+      .addCase(verifyApiUserEmail.fulfilled, userAdapter.addOne);
   },
 });
 
 export const { selectAll: displayUsers, selectById: displayUser } =
   userAdapter.getSelectors((state: RootState) => state.users);
 
-export const { setIsLoginFormOpen, setUserInfo, setToken } = userSlice.actions;
+export const { setIsLoginFormOpen, setUserInfo, setToken, setFile } =
+  userSlice.actions;
 
 export default userSlice.reducer;

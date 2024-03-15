@@ -7,16 +7,17 @@ import { useSelector } from "react-redux";
 import {
   profilePhotoUploadApi,
   displayUser,
+  setFile,
 } from "../../feature/reducers/userSlice";
 import { IoIosCamera } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const HeaderProfile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const userId = localStorage.getItem("userId");
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const [file, setFile] = useState<File | null>(null);
-
+const navigate=useNavigate()
+  const { file } = useSelector((state: RootState) => state.users);
   const [showBtn, setShowBtn] = useState(false);
   const user = useSelector((state: RootState) => displayUser(state, userId!));
   const { token } = useSelector((state: RootState) => state.users);
@@ -29,24 +30,13 @@ const HeaderProfile = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
-      setFile(selectedFile);
+      dispatch(setFile(selectedFile));
+      console.log(file);
+      navigate("/profile_change")
     }
   };
   console.log("token: ", token);
-  const loadImage = async () => {
-    if (file !== null) {
-      console.log("file: ", file);
-      try {
-        const response = await dispatch(profilePhotoUploadApi(file)).unwrap();
-        console.log(response.message);
-        setShowBtn(false);
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    } else {
-      console.log("no file");
-    }
-  };
+
 
   return (
     <div className="my-4">
@@ -58,7 +48,7 @@ const HeaderProfile = () => {
             alt=""
           />
           <div className="flex items-center bg-SECONDARY_GRAY/80 absolute p-1.5 rounded-full right-0 bottom-3 cursor-pointer ">
-            <button onClick={loadImage}>Upload</button>
+          
 
             <div>
               <button onClick={handleClick}>
