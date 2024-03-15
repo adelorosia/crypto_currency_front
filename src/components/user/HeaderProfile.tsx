@@ -30,7 +30,6 @@ const HeaderProfile = () => {
     if (e.target.files !== null && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
       setFile(selectedFile);
-      // استفاده از selectedFile
     }
   };
   console.log("token: ", token);
@@ -45,7 +44,7 @@ const HeaderProfile = () => {
         console.log(error.message);
       }
     } else {
-      console.log("فایل مقداردهی نشده است.");
+      console.log("no file");
     }
   };
 
