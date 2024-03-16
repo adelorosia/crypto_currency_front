@@ -3,14 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../feature/store";
 import {  displayCoins, setCoinId } from "../../feature/reducers/coinSlice";
 import Chart from "chart.js/auto";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ICoin } from "../../interface";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../pagination/Pgination";
 
 function Coins() {
   const coins = useSelector(displayCoins);
   const { isDarkMode } = useSelector((state: RootState) => state.app);
   const chartRefs = useRef<HTMLCanvasElement[]>([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 10; // Number of items per page
+  const totalItems = 250;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = Math.min(startIndex + perPage, totalItems);
 
   
     const dispatch = useDispatch()
@@ -82,16 +94,30 @@ function Coins() {
   };
 
   useEffect(() => {
-    coins.forEach((item, index) => {
+    // Berechne den Start- und Endindex basierend auf der aktuellen Seite
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = Math.min(startIndex + perPage, totalItems);
+  
+    // Aktualisiere die chartRefs.current-Array, um sicherzustellen, dass sie groß genug ist,
+    // um alle Canvas-Elemente für die aktuellen Seiten zu speichern
+    chartRefs.current = Array.from({ length: endIndex - startIndex }, (_, index) => {
+      return chartRefs.current[index] || null;
+    });
+  
+    // Render neue Charts für die Münzen auf der aktuellen Seite
+    coins.slice(startIndex, endIndex).forEach((item, index) => {
       const canvas = chartRefs.current[index];
       if (canvas) {
         renderChart(canvas, item);
       }
     });
-  }, [coins]);
+  }, [coins, currentPage, perPage, totalItems]);
+  
+  
 
   return (
-    <div className="overflow-x-auto font-bold">
+    <div>
+      <div className="overflow-x-auto font-bold">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-semibold text-2xl font-FONT_VIGA">Market Update</h2>
         <button className="bg-PRIMARY_BLUE px-4 py-1 rounded-full text-PRIMARY_WHITE">
@@ -115,7 +141,7 @@ function Coins() {
           </tr>
         </thead>
         <tbody className="text-sm">
-          {coins.slice(0, 10).map((coin, index) => (
+          {coins.slice(startIndex, endIndex).map((coin, index) => (
             <tr
               className="border-b last:border-b-0 border-gray-200 cursor-pointer"
               key={coin._id}
@@ -177,8 +203,36 @@ function Coins() {
           ))}
         </tbody>
       </table>
+     
+    </div>
+    <div className="flex items-center justify-between mt-2 capitalize h-[2rem]">
+        <span>
+          Data provided by{" "}
+          <a
+            className="text-green-400 underline"
+            href="http://www.coingecko.com"
+            rel="noreferrer"
+            target={"_blank"}
+          >
+            CoinGecko
+          </a>
+        </span>
+        <Pagination
+          perPage={perPage}
+          totalItems={totalItems}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />{" "}
+      </div>
     </div>
   );
 }
 
 export default Coins;
+
+
+
+
+
+
+/*   */
