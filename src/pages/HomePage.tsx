@@ -1,7 +1,7 @@
 import MaxWithWrapper from "../components/MaxWithWrapper";
 import MainSlider, { ICarouselItem } from "../components/slider/MainSlider";
 
-import Coins from "../components/Coins/Coins";
+import Coins from "../components/coins/Coins";
 
 import CoinSlider from "../components/slider/CoinSlider";
 import { useSelector } from "react-redux";
@@ -29,16 +29,19 @@ const items: ICarouselItem[] = [
 ];
 
 const HomePage = () => {
-  const {isDarkMode}=useSelector((state:RootState)=>state.app)
+  const { isDarkMode } = useSelector((state: RootState) => state.app);
   return (
     <MaxWithWrapper>
       <MainSlider items={items} />
       <div className="my-4">
         {" "}
         <CoinSlider />
-  
       </div>
-      <div className={`mt-4 pt-5 px-5 rounded-md${isDarkMode?"  bg-BLACK":" bg-SECONDARY_WHITE "}`}>
+      <div
+        className={`mt-4 pt-5 px-5 rounded-md${
+          isDarkMode ? "  bg-BLACK" : " bg-SECONDARY_WHITE "
+        }`}
+      >
         <Coins />
       </div>
       <div>
