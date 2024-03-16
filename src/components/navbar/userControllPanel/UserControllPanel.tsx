@@ -49,9 +49,11 @@ const userId=localStorage.getItem("userId")
   const user = useSelector((state: RootState) =>
     displayUser(state, userId || "")
   );
-  useEffect(() => {dispatch(fetchUsers())}, [userId]);
-  const dispatch = useDispatch<AppDispatch>();
 
+  const dispatch = useDispatch<AppDispatch>();
+useEffect(()=>{
+  console.log("userId: ",userId)
+},[userId])
   return (
     <>
       <div

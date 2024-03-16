@@ -14,6 +14,7 @@ import {
   logoutUser,
   registerUser,
   verifyUserEmail,
+  checkToken,
 } from "../../services";
 import { RootState } from "../store";
 
@@ -29,6 +30,22 @@ const userAdapter = createEntityAdapter({
   selectId: (user: IUser) => user._id,
 });
 
+//checkToken
+export const checkApiToken = createAsyncThunk(
+  "/users/checkApiToken",
+  async () => {
+    try {
+      const response = await checkToken();
+      localStorage.setItem("userId", response.data.user._id);
+      return response.data;
+    } catch (error: any) {
+      localStorage.clear();
+      throw error.response.data.message;
+    }
+  }
+);
+
+//Register User
 export const registerApiUser = createAsyncThunk(
   "/users/registerApiUser",
   async (initialUser: TUser) => {
@@ -41,6 +58,7 @@ export const registerApiUser = createAsyncThunk(
   }
 );
 
+//Login User
 export const loginApiUser = createAsyncThunk(
   "/users/loginApiUser",
   async (initialUser: TUser) => {
@@ -53,6 +71,7 @@ export const loginApiUser = createAsyncThunk(
   }
 );
 
+//Logout User
 export const logoutApiUser = createAsyncThunk(
   "/users/logoutApiUser",
   async () => {
@@ -65,6 +84,7 @@ export const logoutApiUser = createAsyncThunk(
   }
 );
 
+//Verify Email
 export const verifyApiUserEmail = createAsyncThunk(
   "/users/verifyApiUserEmail",
   async () => {
@@ -77,6 +97,7 @@ export const verifyApiUserEmail = createAsyncThunk(
   }
 );
 
+//Account Verification
 export const accountApiVerification = createAsyncThunk(
   "/users/accountApiVerification",
   async (initialToken: TUser) => {
@@ -89,6 +110,7 @@ export const accountApiVerification = createAsyncThunk(
   }
 );
 
+//Get Users
 export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
   try {
     const response = await getAllUsers();
@@ -98,6 +120,7 @@ export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
   }
 });
 
+//Profile Photo Upload
 export const profilePhotoUploadApi = createAsyncThunk(
   "/users/profilePhotoUploadApi",
 
@@ -164,6 +187,10 @@ const userSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         userAdapter.upsertMany(state, action.payload);
+      })
+
+      .addCase(checkApiToken.fulfilled, (state, action) => {
+        userAdapter.setOne(state, action.payload.user);
       })
 
       .addCase(accountApiVerification.fulfilled, userAdapter.updateOne)

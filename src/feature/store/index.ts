@@ -1,6 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import userReducer, { fetchUsers, setToken } from "../reducers/userSlice";
+import userReducer, {
+  checkApiToken,
+  fetchUsers,
+  setToken,
+} from "../reducers/userSlice";
 import appReducer from "../reducers/appSlice";
 import coinReducer, { fetchCoins } from "../reducers/coinSlice";
 import { axiosJWT, refreshToken } from "../../services";
@@ -38,6 +42,7 @@ axiosJWT.interceptors.request.use(
 
 store.dispatch(fetchUsers());
 store.dispatch(fetchCoins());
+store.dispatch(checkApiToken());
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

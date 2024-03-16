@@ -53,6 +53,12 @@ export const refreshToken = () => {
   return axios.get(url);
 };
 
+//Check to
+export const checkToken = () => {
+  const url = `${SERVER_URL}/check-token`;
+  return axios.get(url);
+};
+
 //GET LIST OF ALL USERS
 export const getAllUsers = () => {
   const url = `${SERVER_URL}/users`;

@@ -11,20 +11,21 @@ import {
 import { AppDispatch, RootState } from "./feature/store";
 import SidebarMenu from "./components/navbar/menu/SidebarMenu";
 import { useEffect, useRef } from "react";
-import { displayUsers } from "./feature/reducers/userSlice";
+import { checkApiToken } from "./feature/reducers/userSlice";
 import Footer from "./components/footer/Footer";
 import UpAndDown from "./components/upAndDownButton/UpAndDown";
 
-
 const App = () => {
-
   const goTopRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const { isUserPanelOpen, isSidebarMenuOpen, isDarkMode } = useSelector(
     (state: RootState) => state.app
   );
-  const users = useSelector(displayUsers);
-  useEffect(() => {}, [users]);
+
+
+  useEffect(() => {
+    dispatch(checkApiToken());
+  }, [dispatch]);
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "true") {

@@ -20,16 +20,6 @@ export interface IUser {
   token:string
 }
 
-export interface IJwtPayload {
-  userId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  photo: string;
-  bio: string;
-  isAdmin: boolean;
-}
-
 export type TUser = Partial<IUser>;
 
 export interface ICoin {
